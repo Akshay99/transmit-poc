@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 
 import { Hero } from '../hero';
+declare const com: any;
+declare const xmui: any;
+declare const xmsdk: any;
+
+let sdk = xmsdk.XmSdk();
 
 @Component({
   selector: 'app-transmit-form',
@@ -9,12 +14,22 @@ import { Hero } from '../hero';
 })
 export class HeroFormComponent {
 
-  model = new Hero(1, 'http://url', 'demo_app', 'ramya', 'logon_journy');
+  model;
+
+  initTransmit() {
+    this.model = new Hero(1, 'http://url', 'demo_app', 'ramya', 'logon_journy');
+  }
+
+  constructor() {
+    this.initTransmit();
+  }
+
 
   submitted = false;
 
-  onSubmit() { this.submitted = true; 
-  
+  onSubmit() {
+    this.submitted = true;
+
   }
 
 
